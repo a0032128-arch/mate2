@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día del Estudiante - Álgebra</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:linear-gradient(135deg,#4f46e5,#9333ea,#ec4899);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+    color:white;
+}
+
+/* Fondo animado */
+
+.background{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.bubble{
+    position:absolute;
+    bottom:-150px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    animation:subir linear infinite;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Símbolos matemáticos */
+
+.math{
+    position:absolute;
+    font-size:2rem;
+    opacity:0.18;
+    animation:girar 10s linear infinite;
+    z-index:1;
+}
+
+@keyframes girar{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.m1{ top:8%; left:5%; }
+.m2{ top:15%; right:8%; }
+.m3{ bottom:10%; left:10%; }
+.m4{ bottom:15%; right:10%; }
+
+/* Tarjeta principal */
+
+.card{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:900px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    animation:entrada 1.5s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+h1{
+    font-size:4rem;
+    margin-bottom:15px;
+    animation:brillo 3s infinite alternate;
+}
+
+@keyframes brillo{
+    from{
+        text-shadow:0 0 10px white;
+    }
+
+    to{
+        text-shadow:
+        0 0 20px white,
+        0 0 40px #f9a8d4,
+        0 0 60px #f472b6;
+    }
+}
+
+h2{
+    font-size:2rem;
+    margin-bottom:25px;
+    color:#fde68a;
+}
+
+.message{
+    font-size:1.2rem;
+    line-height:2;
+    margin:25px 0;
+    text-align:left;
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:20px;
+}
+
+.message strong{
+    color:#fde68a;
+}
+
+.formula{
+    font-size:2rem;
+    font-weight:bold;
+    color:#86efac;
+    margin:25px 0;
+    animation:mover 2s infinite alternate;
+}
+
+@keyframes mover{
+    from{
+        transform:translateX(-10px);
+    }
+
+    to{
+        transform:translateX(10px);
+    }
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 35px;
+    border-radius:50px;
+    background:white;
+    color:#7c3aed;
+    text-decoration:none;
+    font-size:1.1rem;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    background:#fde68a;
+}
+
+/* RESPONSIVE PARA TELÉFONOS */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+        align-items:flex-start;
+    }
+
+    .card{
+        padding:25px 20px;
+        border-radius:25px;
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+
+    h1{
+        font-size:2.2rem;
+        line-height:1.3;
+    }
+
+    h2{
+        font-size:1.2rem;
+    }
+
+    .message{
+        font-size:1rem;
+        line-height:1.8;
+        padding:18px;
+        text-align:left;
+    }
+
+    .formula{
+        font-size:1.3rem;
+    }
+
+    .btn{
+        width:100%;
+        padding:14px;
+        font-size:1rem;
+    }
+
+    .math{
+        font-size:1.5rem;
+    }
+}
+/* AGREGAR ESTE CSS */
+
+.dedicatoria{
+    margin-top:25px;
+    padding:18px;
+    background:rgba(255,255,255,0.10);
+    border:2px solid rgba(255,255,255,0.2);
+    border-radius:18px;
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#fff;
+    animation:latido 2s infinite;
+}
+
+@keyframes latido{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.02);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@media(max-width:768px){
+
+    .dedicatoria{
+        font-size:0.95rem;
+        padding:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Fondo -->
+<div class="background">
+
+    <div class="bubble" style="left:10%; width:40px; height:40px; animation-duration:10s;"></div>
+
+    <div class="bubble" style="left:25%; width:70px; height:70px; animation-duration:15s;"></div>
+
+    <div class="bubble" style="left:45%; width:50px; height:50px; animation-duration:12s;"></div>
+
+    <div class="bubble" style="left:70%; width:90px; height:90px; animation-duration:18s;"></div>
+
+    <div class="bubble" style="left:85%; width:60px; height:60px; animation-duration:11s;"></div>
+
+</div>
+
+<!-- Símbolos -->
+<div class="math m1">∑</div>
+<div class="math m2">x²</div>
+<div class="math m3">√</div>
+<div class="math m4">π</div>
+
+<!-- Tarjeta -->
+<div class="card">
+
+    <h1>🎉 Feliz Día del Estudiante 🎉</h1>
+
+    <h2>Para mis alumos de 2° Semestre</h2>
+
+    <div class="formula">
+        Álgebra + Esfuerzo = Éxito ✨
+    </div>
+
+    <div class="message">
+
+        <strong>¡Feliz Día del Estudiante a los mejores de 2do semestre! 🎓✨</strong>
+        <br><br>
+
+        Recuerden que en la vida, igual que en el álgebra:
+        <br><br>
+
+        ➜ Los problemas complejos se resuelven paso a paso.
+        <br><br>
+
+        ➜ Las variables pueden cambiar, pero su esencia y potencial son constantes.
+        <br><br>
+
+        ➜ Los errores solo son intentos necesarios para llegar al resultado correcto.
+        <br><br>
+
+        ¡Sigan sumando éxitos, restando miedos y multiplicando su conocimiento!
+        Disfruten su día. 💜
+
+    </div>
+    <div class="dedicatoria">
+    Para los grupos <strong>230A, 230B, 202A, 202B, 225A, 235 y 212C</strong>,
+    <br>
+    de parte del <strong>Profesor Raymundo Plata</strong> 👨‍🏫✨
+</div>
+
+    <a href="#" class="btn">📚 ¡Sigue Aprendiendo!</a>
+
+</div>
+
+</body>
+</html>
