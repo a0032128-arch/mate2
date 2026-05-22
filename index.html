@@ -269,7 +269,34 @@ h2{
     }
 
 }
+.contador{
+    margin-top:25px;
+    padding:15px 20px;
+    display:inline-block;
+    background:rgba(255,255,255,0.12);
+    border-radius:15px;
+    font-size:1.1rem;
+    font-weight:bold;
+    backdrop-filter:blur(5px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    animation:brilloContador 2s infinite alternate;
+}
 
+#contador{
+    color:#fde68a;
+    font-size:1.3rem;
+    margin-left:8px;
+}
+
+@keyframes brilloContador{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.05);
+    }
+}
 </style>
 </head>
 
@@ -333,10 +360,28 @@ h2{
     <br>
     de parte del <strong>Profesor Raymundo Plata</strong> 👨‍🏫✨
 </div>
+    <!-- CONTADOR DE VISITAS -->
+<div class="contador">
+    👀 Visitas a esta página:
+    <span id="contador">0</span>
+</div>
 
     <a href="https://forms.gle/UYjk1UUDHi36Hogv7" class="btn">📚 "Sorpresa"¡Sigue Aprendiendo! </a>
 
 </div>
+<script>
+    let visitas = localStorage.getItem("contadorVisitas");
+
+    if(visitas === null){
+        visitas = 0;
+    }
+
+    visitas++;
+
+    localStorage.setItem("contadorVisitas", visitas);
+
+    document.getElementById("contador").textContent = visitas;
+</script>
 
 </body>
 </html>
